@@ -6,6 +6,9 @@ ruby '3.0.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
 
+# Use devise
+gem 'devise'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
