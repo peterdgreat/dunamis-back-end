@@ -11,3 +11,10 @@ Admin.create!(
     password_confirmation: 'peterdgreat3',
     name: 'Peter'
 )
+uploader = ImageUploader.new(:store)
+file = File.new(Rails.root.join('./assets/bridal.jpg'))
+post_1 = Post.create!(
+    image: uploader.upload(file),
+    category: 'Weddings',
+    admin_id: 1,
+)

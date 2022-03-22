@@ -16,6 +16,6 @@ class Api::V1::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:category, :image)
+    params.require(:post).permit(:category, :image, :admin_id)
   end
 end
