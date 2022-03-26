@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get 'posts/index'
+      get 'posts', to: 'posts#index' 
       get 'posts/show'
+      post 'posts/create'
     end
   end
   # devise for admin api v1 routes
@@ -12,8 +13,6 @@ Rails.application.routes.draw do
       sessions: 'admins/sessions',
       registrations: 'admins/registrations'
     }
-    post '/posts/create', to: 'posts#create'
-    get '/posts', to: 'posts#index'
   end
 end
 
