@@ -1,6 +1,14 @@
 class Api::V1::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.map do |post|
+      {
+        id: post.id,
+        image: post.image_url,
+        category: post.category,
+        admin_id: post.admin_id,
+      }
+    end
+
     render json: @posts
   end
 
