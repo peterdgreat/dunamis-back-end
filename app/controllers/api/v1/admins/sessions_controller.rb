@@ -5,9 +5,13 @@ class Api::V1::Admins::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   # def new
-  #   super
+  #   @posts = Post.all
+  #   render json: @posts
   # end
-
+  def index
+    @posts = Post.all
+    render json: @posts
+  end
   # POST /resource/sign_in
   # def create
   #   super

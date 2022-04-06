@@ -5,10 +5,10 @@ class Api::V1::Admins::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def index
-    @posts = Post.all
-    render json: @posts
-  end
+  # def index
+  #   @posts = Post.all
+  #   render json: @posts
+  # end
 
   # POST /resource
   def create

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       get 'posts', to: 'posts#index' 
       get 'posts/show'
       post 'posts/create'
+      get 'admins',to: 'admins/lists#index'
     end
   end
   # devise for admin api v1 routes
