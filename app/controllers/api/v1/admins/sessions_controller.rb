@@ -4,23 +4,26 @@ class Api::V1::Admins::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   @posts = Post.all
-  #   render json: @posts
-  # end
-  def index
-    @posts = Post.all
-    render json: @posts
-  end
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    @admin = Admin.find_for_database_authentication(email: params[:admin][:email])
+    return invalid_login_attempt unless @admin
+
+    if @admin.valid_password?(params[:admin][:password])
+      sign_in :admin, @admin
+      render json: @admin
+    else
+      invalid_login_attempt
+    end
+  end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    sign_out(:admin)
+    render json: {
+      message: 'Logged out'
+    }
+  end
 
   # protected
 
