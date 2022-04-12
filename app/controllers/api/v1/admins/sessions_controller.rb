@@ -25,7 +25,16 @@ class Api::V1::Admins::SessionsController < Devise::SessionsController
   before_action :load_user, only: :create
   # sign in
   def create
-    if @user.valid_password?(sign_in_params[:password])
+    # if admin does not exist
+    if @user.nil?
+      render json: {
+        messages: 'Invalid email or password',
+        is_success: false,
+        data: {}
+
+      }, status: :unauthorized
+
+    elsif @user.valid_password?(sign_in_params[:password])
       sign_in 'user', @user
       render json: {
         messages: 'Signed In Successfully',
@@ -34,7 +43,7 @@ class Api::V1::Admins::SessionsController < Devise::SessionsController
       }, status: :ok
     else
       render json: {
-        messages: 'Signed In Failed - Unauthorized',
+        messages: 'Invalid password',
         is_success: false,
         data: {}
       }, status: :unauthorized
@@ -49,11 +58,6 @@ class Api::V1::Admins::SessionsController < Devise::SessionsController
 
   def load_user
     @user = Admin.find_for_database_authentication(email: sign_in_params[:email])
-    @user || render(json: {
-                      messages: 'Cannot get User',
-                      is_success: false,
-                      data: {}
-                    }, status: :failure)
   end
 
   # DELETE /resource/sign_out
