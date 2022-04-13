@@ -4,7 +4,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
+gem 'image_processing', '~> 1.2'
 gem 'rails', '~> 7.0.2', '>= 7.0.2.2'
+gem 'shrine', '~> 3.3'
+gem 'shrine-cloudinary', '~> 1.1'
+
+# Use devise
+gem 'devise'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -41,6 +47,7 @@ gem 'rack-cors'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
 end
 
 group :development do
