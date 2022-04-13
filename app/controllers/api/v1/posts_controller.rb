@@ -5,7 +5,7 @@ class Api::V1::PostsController < ApplicationController
         id: post.id,
         image: post.image_url,
         category: post.category,
-        admin_id: post.admin_id,
+        admin_id: post.admin_id
       }
     end
 
