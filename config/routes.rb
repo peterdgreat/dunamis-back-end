@@ -15,13 +15,4 @@ Rails.application.routes.draw do
       end
     end
   end
-  #   namespace :api do
-  #   namespace :v1 do
-
-  #     devise_scope :admin do
-  #       post 'admins/sign_in', to: 'admins/sessions#create'
-  #       delete 'admins/sign_out', to: 'admins/sessions#destroy'
-  #     end
-  #   end
-  # end
 end
