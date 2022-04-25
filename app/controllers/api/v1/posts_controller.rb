@@ -25,8 +25,6 @@ class Api::V1::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    head :no_content
-
     render json: 'Post deleted successfully'
   end
 

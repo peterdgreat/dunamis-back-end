@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'posts', to: 'posts#index' 
       get 'posts/show'
       post 'posts/create'
+      delete 'posts/:id/destroy', to: 'posts#destroy'
     #  get 'admin',to: 'admins/lists#current_user'
 
       devise_scope :admin do
