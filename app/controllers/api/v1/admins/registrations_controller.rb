@@ -1,6 +1,5 @@
 class Api::V1::Admins::RegistrationsController < Devise::RegistrationsController
   before_action :ensure_params_exist, only: :create
-  skip_before_filter :verify_authenticity_token, only: :create
   # sign up
   def create
     user = Admin.new user_params
